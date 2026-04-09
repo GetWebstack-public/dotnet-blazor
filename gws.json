@@ -1,0 +1,21 @@
+{
+  "name": "dotnet-blazor",
+  "version": "1.0.0",
+  "services": [
+    {
+      "name": "dotnet-blazor",
+      "path": ".",
+      "port": 8080,
+      "dockerfile": ".gws/Dockerfile",
+      "manifests": ".gws"
+    }
+  ],
+  "provision": {
+    "environments": {
+      "dev": {
+        "type": "k3d",
+        "default": true
+      }
+    }
+  }
+}
