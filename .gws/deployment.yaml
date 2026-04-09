@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-blazor
+  namespace: dotnet-blazor
+  labels:
+    app: dotnet-blazor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-blazor
+  template:
+    metadata:
+      labels:
+        app: dotnet-blazor
+    spec:
+      containers:
+      - name: dotnet-blazor
+        image: dotnet-blazor
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+      restartPolicy: Always
